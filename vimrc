@@ -22,9 +22,6 @@ if has("syntax")
   syntax on
 endif
 
-" If using a dark background within the editing area and syntax highlighting
-" turn on this option as well
-"set background=dark
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
@@ -58,9 +55,10 @@ set number
 set belloff=all
 set ts=4 sw=4 et si
 
-colo ron
 set nocompatible
-filetype off 
+filetype off
+
+set background=dark
 
 "Search down into folders
 "Provides tab completion for all file related tasks
@@ -70,9 +68,9 @@ set path+=**
 
 " ^n does autocomplete in vim
 
-autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
+au BufEnter * set fo-=c fo-=r fo-=o
 
-"Vundle sstuff (Maybe keep?)
+"Vundle stuff (Maybe keep?)
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
@@ -86,13 +84,47 @@ Plugin 'scrooloose/nerdtree'
 "YouCompleteMe
 Plugin 'Valloric/YouCompleteMe'
 let ycm_global_ycm_extra_conf = '~/global_extra_conf.py'
+let ycm_confirm_extra_conf = 0
+
+"Papercolor
+Plugin 'NLKNguyen/papercolor-theme'
 
 "End Vundle stuff
 call vundle#end()
 filetype plugin indent on
 
-
 "NERDTree Config
 map <S-n> :NERDTreeToggle<CR>
 map <C-n> :NERDTreeFocus<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+"Colourscheme
+"colo ron
+colo PaperColor
+let &t_ut='' "This fixes weird black line bug
+
+"Status bar
+set laststatus=2
+set statusline=
+set statusline+=%#DiffAdd#%{(mode()=='n')?'\ \ NORMAL\ ':''}
+set statusline+=%#DiffChange#%{(mode()=='i')?'\ \ INSERT\ ':''}
+set statusline+=%#DiffDelete#%{(mode()=='r')?'\ \ REPLACE\ ':''}
+set statusline+=%#Cursor#%{(mode()=='v')?'\ \ VISUAL\ ':''}
+set statusline+=\ %n\           " buffer number
+set statusline+=%#Visual#       " colour
+set statusline+=%{&paste?'\ PASTE\ ':''}
+set statusline+=%{&spell?'\ SPELL\ ':''}
+set statusline+=%#CursorIM#     " colour
+set statusline+=%R              " readonly flag
+set statusline+=%M              "Changes since last save
+set statusline+=%#CursorLine#   " colour
+set statusline+=\ %t\           " short file name
+set statusline+=%=              " right align
+set statusline+=%#CursorLine#   " colour
+set statusline+=\ %Y\           " file type
+set statusline+=%#CursorIM#     " colour
+set statusline+=\ %3l:%-2c\     " line + column
+set statusline+=%#Cursor#       " colour
+set statusline+=\ %3p%%\        " percentage
+
+set noshowmode "Turns off showing mode cause it's in status bar
