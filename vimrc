@@ -107,10 +107,10 @@ set statusline+=%#Visual#       " colour
 set statusline+=%{&paste?'\ PASTE\ ':''}
 set statusline+=%{&spell?'\ SPELL\ ':''}
 set statusline+=%#CursorIM#     " colour
-set statusline+=%R              " readonly flag
+set statusline+=%R              " readonly flag/Add h?
 set statusline+=%M              "Changes since last save
 set statusline+=%#CursorLine#   " colour
-set statusline+=\ %t\           " short file name
+set statusline+=\ %t\           " short file name/Use %f instead?
 set statusline+=%=              " right align
 set statusline+=%#CursorLine#   " colour
 set statusline+=\ %Y\           " file type
