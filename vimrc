@@ -44,6 +44,7 @@ if filereadable("/etc/vim/vimrc.local")
 endif
 
 set number
+set rnu "Relative number
 set belloff=all
 set ts=4 sw=4 et si
 
