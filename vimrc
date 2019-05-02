@@ -96,6 +96,15 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 colo PaperColor
 let &t_ut='' "This fixes weird black line bug
 
+"Turn off the stupid preview window
+set completeopt-=preview
+
+"tab stuff
+nnoremap <C-Left> :tabprevious<CR>
+nnoremap <C-Right> :tabnext<CR>
+nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
+nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
+
 "Status bar
 set laststatus=2
 set statusline=
