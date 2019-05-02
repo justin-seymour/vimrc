@@ -46,9 +46,10 @@ endif
 set number
 set rnu "Relative number
 set belloff=all
-set ts=4 sw=4 et si
+set ts=4 sw=4
+set expandtab
 set autoindent
-set cindent
+set smartindent
 
 set nocompatible
 filetype off
