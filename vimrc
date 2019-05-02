@@ -47,6 +47,8 @@ set number
 set rnu "Relative number
 set belloff=all
 set ts=4 sw=4 et si
+set autoindent
+set cindent
 
 set nocompatible
 filetype off
