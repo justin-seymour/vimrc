@@ -48,7 +48,7 @@ set rnu "Relative number
 set belloff=all
 set ts=4 sw=4
 set expandtab
-set autoindent
+set autoindent "Use cindent???
 set smartindent
 
 set nocompatible
@@ -103,10 +103,12 @@ let &t_ut='' "This fixes weird black line bug
 set completeopt-=preview
 
 "tab stuff
-nnoremap <C-Left> :tabprevious<CR>
-nnoremap <C-Right> :tabnext<CR>
-nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
-nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
+nnoremap <silent> <C-Up> :wincmd k<CR>
+nnoremap <silent> <C-Down> :wincmd j<CR>
+nnoremap <silent> <C-Left> :wincmd h<CR>
+nnoremap <silent> <C-Right> :wincmd l<CR>
+nnoremap <A-Left> :tabprevious<CR>
+nnoremap <A-Right> :tabnext<CR>
 
 "Status bar
 set laststatus=2
