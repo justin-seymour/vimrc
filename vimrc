@@ -1,34 +1,10 @@
-" This line should not be removed as it ensures that various options are
-" properly set to work with the Vim-related packages available in Debian.
-runtime! debian.vim
+runtime! archlinux.vim
+set encoding=UTF-8
 
-" Vim will load $VIMRUNTIME/defaults.vim if the user does not have a vimrc.
-" This happens after /etc/vim/vimrc(.local) are loaded, so it will override
-" any settings in these files.
-" If you don't want that to happen, uncomment the below line to prevent
-" defaults.vim from being loaded.
-" let g:skip_defaults_vim = 1
-
-" Vim5 and later versions support syntax highlighting. Uncommenting the next
-" line enables syntax highlighting by default.
 if has("syntax")
   syntax on
 endif
 
-" Uncomment the following to have Vim jump to the last position when
-" reopening a file
-"if has("autocmd")
-"  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-"endif
-
-" Uncomment the following to have Vim load indentation rules and plugins
-" according to the detected filetype.
-"if has("autocmd")
-"  filetype plugin indent on
-"endif
-
-" The following are commented out as they cause vim to behave a lot
-" differently from regular Vi. They are highly recommended though.
 set showcmd		" Show (partial) command in status line.
 set showmatch		" Show matching brackets.
 set ignorecase		" Do case insensitive matching
@@ -38,7 +14,6 @@ set ignorecase		" Do case insensitive matching
 "set hidden		" Hide buffers when they are abandoned
 set mouse=a		" Enable mouse usage (all modes)
 
-" Source a global configuration file if available
 if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
 endif
@@ -85,6 +60,9 @@ let ycm_confirm_extra_conf = 0
 "Papercolor
 Plugin 'NLKNguyen/papercolor-theme'
 
+"Wal
+Plugin 'dylanaraps/wal.vim'
+
 "End Vundle stuff
 call vundle#end()
 filetype plugin indent on
@@ -98,6 +76,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 "colo ron
 colo PaperColor
 let &t_ut='' "This fixes weird black line bug
+"colo wal
 
 "Turn off the stupid preview window
 set completeopt-=preview
@@ -135,3 +114,33 @@ set statusline+=%#Cursor#       " colour
 set statusline+=\ %3p%%\        " percentage
 
 set noshowmode "Turns off showing mode cause it's in status bar
+
+hi Normal ctermbg=NONE
+
+let g:PaperColor_Theme_Options = {
+  \   'theme': {
+  \     'default.dark': {
+  \       'transparent_background': 1
+  \     }
+  \   }
+  \ }
+
+"Auto compile - only works for make and c/c++
+function! Runf4()
+    if filereadable("./Makefile")
+        make
+    else
+        if (&filetype == "c")
+            execute(":w")
+            execute("exec '!gcc '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')")
+        elseif (&filetype ==  "cpp")
+            execute(":w")
+            execute("exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')")
+        endif
+    endif
+endfunction
+
+nmap <F4> :call Runf4()<CR>
+
+"autocmd filetype c nnoremap <F4> :w <bar> exec '!gcc '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
+"autocmd filetype cpp nnoremap <F4> :w <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
