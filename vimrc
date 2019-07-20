@@ -63,6 +63,9 @@ Plugin 'NLKNguyen/papercolor-theme'
 "Wal
 Plugin 'dylanaraps/wal.vim'
 
+"Vimtex
+Plugin 'lervag/vimtex'
+
 "End Vundle stuff
 call vundle#end()
 filetype plugin indent on
@@ -114,6 +117,10 @@ set statusline+=%#Cursor#       " colour
 set statusline+=\ %3p%%\        " percentage
 
 set noshowmode "Turns off showing mode cause it's in status bar
+
+"Vimtex stuff
+let g:tex_flavor = 'latex'
+let maplocalleader = "\\" "Good enough?? It's convenient at least
 
 hi Normal ctermbg=NONE
 
