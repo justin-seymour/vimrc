@@ -31,7 +31,7 @@ filetype off
 
 set background=dark
 
-set viminfo+=n~/.vim/viminfo
+"set viminfo+=n~/.vim/viminfo
 
 "Search down into folders
 "Provides tab completion for all file related tasks
