@@ -50,7 +50,7 @@ Plugin 'VundleVim/Vundle.vim'
 "Plugins here
 
 "Nerdtree plugin
-Plugin 'scrooloose/nerdtree'
+"Plugin 'scrooloose/nerdtree'
 
 "YouCompleteMe
 Plugin 'Valloric/YouCompleteMe'
@@ -71,9 +71,9 @@ call vundle#end()
 filetype plugin indent on
 
 "NERDTree Config
-map <S-n> :NERDTreeToggle<CR>
-map <C-n> :NERDTreeFocus<CR>
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+"map <S-m> :NERDTreeToggle<CR>
+"map <C-m> :NERDTreeFocus<CR>
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "Colourscheme
 "colo ron
@@ -135,6 +135,7 @@ let g:PaperColor_Theme_Options = {
 "Auto compile - only works for make and c/c++
 function! Runf4()
     if filereadable("./Makefile")
+        execute(":w")
         make
     else
         if (&filetype == "c")
