@@ -23,8 +23,9 @@ set rnu "Relative number
 set belloff=all
 set ts=4 sw=4
 set expandtab
-set autoindent "Use cindent???
-set smartindent
+set autoindent
+set cindent
+"set smartindent
 
 set nocompatible
 filetype off
