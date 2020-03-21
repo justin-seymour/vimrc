@@ -44,11 +44,9 @@ set path+=**
 au BufEnter * set fo-=c fo-=r fo-=o
 
 "Vundle stuff (Maybe keep?)
-"set rtp+=~/.vim/bundle/Vundle.vim
-"call vundle#begin()
-"Plugin 'VundleVim/Vundle.vim'
-
-call plug#begin('~/.vim/bundle')
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
 
 "Plugins here
 
@@ -58,17 +56,16 @@ call plug#begin('~/.vim/bundle')
 "let ycm_confirm_extra_conf = 0
 
 "coc
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 
 "Papercolor
-Plug 'NLKNguyen/papercolor-theme'
+Plugin 'NLKNguyen/papercolor-theme'
 
 "Vimtex
-Plug 'lervag/vimtex'
+Plugin 'lervag/vimtex'
 
 "End Vundle stuff
-"call vundle#end()
-call plug#end()
+call vundle#end()
 filetype plugin indent on
 
 "coc config
