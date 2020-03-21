@@ -44,38 +44,32 @@ set path+=**
 au BufEnter * set fo-=c fo-=r fo-=o
 
 "Vundle stuff (Maybe keep?)
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
+"set rtp+=~/.vim/bundle/Vundle.vim
+"call vundle#begin()
+"Plugin 'VundleVim/Vundle.vim'
 
+call plug#begin('~/.vim/bundle')
 
 "Plugins here
 
-"Nerdtree plugin
-"Plugin 'scrooloose/nerdtree'
-
 "YouCompleteMe
-Plugin 'Valloric/YouCompleteMe'
-let ycm_global_ycm_extra_conf = '~/global_extra_conf.py'
-let ycm_confirm_extra_conf = 0
+"Plugin 'Valloric/YouCompleteMe'
+"let ycm_global_ycm_extra_conf = '~/global_extra_conf.py'
+"let ycm_confirm_extra_conf = 0
+
+"coc
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 "Papercolor
-Plugin 'NLKNguyen/papercolor-theme'
-
-"Wal
-Plugin 'dylanaraps/wal.vim'
+Plug 'NLKNguyen/papercolor-theme'
 
 "Vimtex
-Plugin 'lervag/vimtex'
+Plug 'lervag/vimtex'
 
 "End Vundle stuff
-call vundle#end()
+"call vundle#end()
+call plug#end()
 filetype plugin indent on
-
-"NERDTree Config
-"map <S-m> :NERDTreeToggle<CR>
-"map <C-m> :NERDTreeFocus<CR>
-"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "Colourscheme
 "colo ron
