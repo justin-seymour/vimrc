@@ -23,9 +23,8 @@ set rnu "Relative number
 set belloff=all
 set ts=4 sw=4
 set expandtab
-set autoindent
-set cindent
-"set smartindent
+set autoindent "Use cindent???
+set smartindent
 
 set nocompatible
 filetype off
@@ -71,6 +70,10 @@ Plug 'lervag/vimtex'
 "call vundle#end()
 call plug#end()
 filetype plugin indent on
+
+"coc config
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 "Colourscheme
 "colo ron
