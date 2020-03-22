@@ -12,7 +12,7 @@ set ignorecase		" Do case insensitive matching
 "set incsearch		" Incremental search
 "set autowrite		" Automatically save before commands like :next and :make
 "set hidden		" Hide buffers when they are abandoned
-set mouse=a		" Enable mouse usage (all modes)
+"set mouse=a		" Enable mouse usage (all modes)
 
 if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
@@ -101,6 +101,10 @@ set statusline+=\ %3p%%\        " percentage
 
 set noshowmode "Turns off showing mode cause it's in status bar
 
+"Fix vim splits
+set splitbelow
+set splitright
+
 "Vimtex stuff
 let g:tex_flavor = 'latex'
 let maplocalleader = "\\" "Good enough?? It's convenient at least
@@ -133,5 +137,3 @@ endfunction
 
 nmap <F4> :call Runf4()<CR>
 
-"autocmd filetype c nnoremap <F4> :w <bar> exec '!gcc '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
-"autocmd filetype cpp nnoremap <F4> :w <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
