@@ -50,11 +50,6 @@ Plugin 'VundleVim/Vundle.vim'
 
 "Plugins here
 
-"YouCompleteMe
-"Plugin 'Valloric/YouCompleteMe'
-"let ycm_global_ycm_extra_conf = '~/global_extra_conf.py'
-"let ycm_confirm_extra_conf = 0
-
 "coc
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -76,18 +71,9 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 "colo ron
 colo PaperColor
 let &t_ut='' "This fixes weird black line bug
-"colo wal
 
 "Turn off the stupid preview window
 set completeopt-=preview
-
-"tab stuff
-nnoremap <silent> <C-Up> :wincmd k<CR>
-nnoremap <silent> <C-Down> :wincmd j<CR>
-nnoremap <silent> <C-Left> :wincmd h<CR>
-nnoremap <silent> <C-Right> :wincmd l<CR>
-nnoremap <A-Left> :tabprevious<CR>
-nnoremap <A-Right> :tabnext<CR>
 
 "Status bar
 set laststatus=2
