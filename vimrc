@@ -12,7 +12,7 @@ set ignorecase		" Do case insensitive matching
 "set incsearch		" Incremental search
 "set autowrite		" Automatically save before commands like :next and :make
 "set hidden		" Hide buffers when they are abandoned
-"set mouse=a		" Enable mouse usage (all modes)
+set mouse=a		" Enable mouse usage (all modes)
 
 if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
@@ -109,6 +109,11 @@ set splitright
 let g:tex_flavor = 'latex'
 let maplocalleader = "\\" "Good enough?? It's convenient at least
 
+nnoremap <localleader>k :wincmd k<CR>
+nnoremap <localleader>j :wincmd j<CR>
+nnoremap <localleader>h :wincmd h<CR>
+nnoremap <localleader>l :wincmd l<CR>
+
 hi Normal ctermbg=NONE
 
 let g:PaperColor_Theme_Options = {
@@ -136,4 +141,7 @@ function! Runf4()
 endfunction
 
 nmap <F4> :call Runf4()<CR>
+
+" Fixes mouse in alacritty
+set ttymouse=sgr
 
