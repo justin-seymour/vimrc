@@ -108,11 +108,12 @@ set splitright
 "Vimtex stuff
 let g:tex_flavor = 'latex'
 let maplocalleader = "\\" "Good enough?? It's convenient at least
+let mapleader = "\<Space>"
 
-nnoremap <localleader>k :wincmd k<CR>
-nnoremap <localleader>j :wincmd j<CR>
-nnoremap <localleader>h :wincmd h<CR>
-nnoremap <localleader>l :wincmd l<CR>
+nnoremap <leader>k :wincmd k<CR>
+nnoremap <leader>j :wincmd j<CR>
+nnoremap <leader>h :wincmd h<CR>
+nnoremap <leader>l :wincmd l<CR>
 
 hi Normal ctermbg=NONE
 
