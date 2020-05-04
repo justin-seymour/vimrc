@@ -51,7 +51,7 @@ Plugin 'VundleVim/Vundle.vim'
 "Plugins here
 
 "coc
-Plugin 'neoclide/coc.nvim', {'branch': 'release'}
+Plugin 'neoclide/coc.nvim'
 
 "Papercolor
 Plugin 'NLKNguyen/papercolor-theme'
@@ -114,6 +114,8 @@ nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>l :wincmd l<CR>
+nnoremap <leader>n :bnext <CR>
+nnoremap <leader>p :bprev <CR>
 
 hi Normal ctermbg=NONE
 
