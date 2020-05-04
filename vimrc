@@ -11,7 +11,7 @@ set ignorecase		" Do case insensitive matching
 "set smartcase		" Do smart case matching
 "set incsearch		" Incremental search
 "set autowrite		" Automatically save before commands like :next and :make
-"set hidden		" Hide buffers when they are abandoned
+set hidden		" Hide buffers when they are abandoned
 set mouse=a		" Enable mouse usage (all modes)
 
 if filereadable("/etc/vim/vimrc.local")
@@ -50,6 +50,9 @@ Plugin 'VundleVim/Vundle.vim'
 
 "Plugins here
 
+"Nerdtree
+Plugin 'preservim/nerdtree'
+
 "coc
 Plugin 'neoclide/coc.nvim'
 
@@ -66,6 +69,9 @@ filetype plugin indent on
 "coc config
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+"Nerdtree config
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "Colourscheme
 "colo ron
@@ -116,6 +122,7 @@ nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>n :bnext <CR>
 nnoremap <leader>p :bprev <CR>
+nnoremap <leader>m :NERDTreeToggle<CR>
 
 hi Normal ctermbg=NONE
 
