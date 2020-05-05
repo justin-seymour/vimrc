@@ -2,7 +2,7 @@ runtime! archlinux.vim
 set encoding=UTF-8
 
 if has("syntax")
-  syntax on
+    syntax on
 endif
 
 set showcmd		" Show (partial) command in status line.
@@ -15,7 +15,7 @@ set hidden		" Hide buffers when they are abandoned
 set mouse=a		" Enable mouse usage (all modes)
 
 if filereadable("/etc/vim/vimrc.local")
-  source /etc/vim/vimrc.local
+    source /etc/vim/vimrc.local
 endif
 
 set number
@@ -43,32 +43,48 @@ set path+=**
 
 au BufEnter * set fo-=c fo-=r fo-=o
 
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 "Vundle stuff (Maybe keep?)
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
+"Switch to plug
+call plug#begin('~/.vim/bundle')
+"Plugin 'VundleVim/Vundle.vim'
 
 "Plugins here
 
 "Nerdtree
-Plugin 'preservim/nerdtree'
+Plug 'preservim/nerdtree'
 
 "coc
-Plugin 'neoclide/coc.nvim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 "Papercolor
-Plugin 'NLKNguyen/papercolor-theme'
+Plug 'NLKNguyen/papercolor-theme'
 
 "Vimtex
-Plugin 'lervag/vimtex'
+Plug 'lervag/vimtex'
 
 "End Vundle stuff
-call vundle#end()
-filetype plugin indent on
+call plug#end()
+"filetype plugin indent on
 
 "coc config
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 "Nerdtree config
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -127,12 +143,12 @@ nnoremap <leader>m :NERDTreeToggle<CR>
 hi Normal ctermbg=NONE
 
 let g:PaperColor_Theme_Options = {
-  \   'theme': {
-  \     'default.dark': {
-  \       'transparent_background': 1
-  \     }
-  \   }
-  \ }
+            \   'theme': {
+            \     'default.dark': {
+            \       'transparent_background': 1
+            \     }
+            \   }
+            \ }
 
 "Auto compile - only works for make and c/c++
 function! Runf4()
