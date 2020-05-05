@@ -51,7 +51,7 @@ endif
 
 "Vundle stuff (Maybe keep?)
 "Switch to plug
-call plug#begin('~/.vim/bundle')
+call plug#begin('~/.vim/plugged')
 "Plugin 'VundleVim/Vundle.vim'
 
 "Plugins here
