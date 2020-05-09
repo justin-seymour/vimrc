@@ -31,7 +31,7 @@ filetype off
 
 set background=dark
 
-"set viminfo+=n~/.vim/viminfo
+set viminfo+=n~/.vim/viminfo
 
 "Search down into folders
 "Provides tab completion for all file related tasks
@@ -46,10 +46,9 @@ au BufEnter * set fo-=c fo-=r fo-=o
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
                 \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    autocmd VimEnter * PlugInstall --sync | source /etc/vimrc
 endif
 
-"Vundle stuff (Maybe keep?)
 "Switch to plug
 call plug#begin('~/.vim/plugged')
 "Plugin 'VundleVim/Vundle.vim'
