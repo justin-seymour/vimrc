@@ -139,10 +139,10 @@ nnoremap <leader>n :bnext <CR>
 nnoremap <leader>p :bprev <CR>
 nnoremap <leader>m :NERDTreeToggle<CR>
 
-nnoremap <leader>= :resize +1<CR>
-nnoremap <leader>- :resize -1<CR>
-nnoremap <leader>. :vertical resize +1<CR>
-nnoremap <leader>, :vertical resize -1<CR>
+nnoremap <leader>= :resize +2<CR>
+nnoremap <leader>- :resize -2<CR>
+nnoremap <leader>. :vertical resize +5<CR>
+nnoremap <leader>, :vertical resize -5<CR>
 "Just do <C-w>= for equal
 "<C-w>_ maxes split
 "<C-w>| maxes v split
