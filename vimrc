@@ -140,6 +140,14 @@ nnoremap <leader>n :bnext <CR>
 nnoremap <leader>p :bprev <CR>
 nnoremap <leader>m :NERDTreeToggle<CR>
 
+nnoremap <leader>= :resize +1<CR>
+nnoremap <leader>- :resize -1<CR>
+nnoremap <leader>. :vertical resize +1<CR>
+nnoremap <leader>, :vertical resize -1<CR>
+"Just do <C-w>= for equal
+"<C-w>_ maxes split
+"<C-w>| maxes v split
+
 hi Normal ctermbg=NONE
 
 let g:PaperColor_Theme_Options = {
