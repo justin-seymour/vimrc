@@ -178,3 +178,6 @@ nmap <F4> :call Runf4()<CR>
 " Fixes mouse in alacritty
 set ttymouse=sgr
 
+"Set language for spell check
+set spelllang=en_au
+
