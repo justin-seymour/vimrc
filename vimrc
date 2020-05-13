@@ -35,7 +35,7 @@ set viminfo+=n~/.vim/viminfo
 
 "Search down into folders
 "Provides tab completion for all file related tasks
-set path+=**
+"set path+=**
 " Hit tab to :find partial match
 " * makes it fuzzy (eg ':find task*.cpp' finds all tasks in directory)
 
