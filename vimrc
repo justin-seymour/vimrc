@@ -54,18 +54,12 @@ call plug#begin('~/.vim/plugged')
 "Plugin 'VundleVim/Vundle.vim'
 
 "Plugins here
-
-"Nerdtree
 Plug 'preservim/nerdtree'
-
-"coc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-"Papercolor
 Plug 'NLKNguyen/papercolor-theme'
-
-"Vimtex
 Plug 'lervag/vimtex'
+
+Plug 'gruvbox-community/gruvbox'
 
 "End Vundle stuff
 call plug#end()
