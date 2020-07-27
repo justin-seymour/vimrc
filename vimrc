@@ -59,7 +59,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'lervag/vimtex'
 
-Plug 'gruvbox-community/gruvbox'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 "End Vundle stuff
 call plug#end()
@@ -140,6 +141,8 @@ nnoremap <leader>, :vertical resize -5<CR>
 "Just do <C-w>= for equal
 "<C-w>_ maxes split
 "<C-w>| maxes v split
+
+nnoremap <leader>f :Files<CR>
 
 hi Normal ctermbg=NONE
 
