@@ -55,6 +55,9 @@ call plug#begin('~/.vim/plugged')
 
 "Plugins here
 Plug 'preservim/nerdtree'
+Plug 'tomasiser/vim-code-dark'
+Plug 'ajmwagar/vim-deus'
+
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'lervag/vimtex'
@@ -85,7 +88,8 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 "Colourscheme
 "colo ron
-colo PaperColor
+"colo PaperColor
+colo codedark
 let &t_ut='' "This fixes weird black line bug
 
 "Turn off the stupid preview window
