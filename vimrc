@@ -158,7 +158,7 @@ let g:PaperColor_Theme_Options = {
             \   }
             \ }
 
-"Auto compile - only works for make and c/c++
+"Compile - only works for make and c/c++
 function! Runf4()
     if filereadable("./Makefile")
         execute(":w")
@@ -174,7 +174,24 @@ function! Runf4()
     endif
 endfunction
 
+function! Runf3()
+    if filereadable("./Makefile")
+        execute(":w")
+        make
+    else
+        if (&filetype == "c")
+            execute(":w")
+            execute("exec '!gcc '.shellescape('%').' -o '.shellescape('%:r')")
+        elseif (&filetype ==  "cpp")
+            execute(":w")
+            execute("exec '!g++ '.shellescape('%').' -o '.shellescape('%:r')")
+        endif
+    endif
+endfunction
+
+
 nmap <F4> :call Runf4()<CR>
+nmap <F3> :call Runf3()<CR>
 
 " Fixes mouse in alacritty
 set ttymouse=sgr
