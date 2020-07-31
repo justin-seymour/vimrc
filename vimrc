@@ -55,7 +55,8 @@ call plug#begin('~/.vim/plugged')
 
 "Plugins here
 Plug 'preservim/nerdtree'
-Plug 'tomasiser/vim-code-dark'
+"Plug 'tomasiser/vim-code-dark'
+Plug 'justin-seymour/vim-code-dark'
 Plug 'ajmwagar/vim-deus'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
