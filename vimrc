@@ -148,6 +148,7 @@ nnoremap <leader>, :vertical resize -5<CR>
 "<C-w>| maxes v split
 
 nnoremap <leader>f :Files<CR>
+nnoremap <leader>g :Buffers<CR>
 
 hi Normal ctermbg=NONE
 
