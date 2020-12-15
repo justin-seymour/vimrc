@@ -191,7 +191,6 @@ function! Runf3()
     endif
 endfunction
 
-
 nmap <F4> :call Runf4()<CR>
 nmap <F3> :call Runf3()<CR>
 
@@ -200,4 +199,38 @@ set ttymouse=sgr
 
 "Set language for spell check
 set spelllang=en_au
+
+function! CommentLine()
+
+    "duplicate line and delete whitespace
+    execute "normal yyp0d^"
+
+    "put into variable
+    let line = getline('.')
+
+    "delete line
+    execute "normal dd"
+
+    "echo line
+
+    "if commented - uncomment
+    "else comment
+
+    if (&filetype == "c" || &filetype == "cpp")
+        if (strpart(line, 0, 2) == "//")
+            execute "normal ^xx"
+        else
+            execute "normal ^i/\/\<ESC>"
+        endif
+    elseif (&filetype == "tex")
+        if (strpart(line, 0, 1) == "%")
+            execute "normal ^x"
+        else
+            execute "normal ^i%"
+        endif
+
+    endif
+endfunction
+
+nnoremap <leader>; :call CommentLine()<CR>
 
