@@ -203,7 +203,7 @@ set spelllang=en_au
 function! CommentLine()
 
     "duplicate line and delete whitespace
-    execute "normal yyp0d^"
+    execute "normal yypk0d^"
 
     "put into variable
     let line = getline('.')
