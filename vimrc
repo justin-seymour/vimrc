@@ -20,13 +20,11 @@ set expandtab
 set autoindent "Use cindent???
 set nocompatible
 set viminfo+=n~/.vim/viminfo
+au BufEnter * set fo-=c fo-=r fo-=o
 
 if filereadable("/etc/vim/vimrc.local")
     source /etc/vim/vimrc.local
 endif
-
-"Fix indenting
-au BufEnter * set fo-=c fo-=r fo-=o
 
 "Plugin stuff
 "Auto install plugins
@@ -46,7 +44,6 @@ Plug 'cocopon/iceberg.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'lervag/vimtex'
 Plug 'itchyny/lightline.vim'
-
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
@@ -56,11 +53,9 @@ call plug#end()
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-"Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
-"GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
@@ -86,7 +81,6 @@ nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>l :wincmd l<CR>
-
 nnoremap <leader>= :resize +2<CR>
 nnoremap <leader>- :resize -2<CR>
 nnoremap <leader>. :vertical resize +5<CR>
@@ -94,22 +88,39 @@ nnoremap <leader>, :vertical resize -5<CR>
 
 nnoremap <leader>n :bnext <CR>
 nnoremap <leader>p :bprev <CR>
-"Just do <C-w>= for equal
-"<C-w>_ maxes split
-"<C-w>| maxes v split
 
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>g :Buffers<CR>
 
-" Deus stuff
 hi Normal ctermbg=NONE
 set t_Co=256
 set background=dark
 colo iceberg
 
+"Configure lightline
 let g:lightline = {
   \ 'colorscheme': 'codedark',
+  \ 'component_function': {
+  \     'spelling': 'GetSpell',
+  \ },
   \ }
+
+let g:lightline.active = {
+  \ 'left': [ [ 'mode', 'paste' ],
+  \           [ 'spelling' ],
+  \           [ 'readonly', 'filename', 'modified' ] ],
+  \ 'right': [ [ 'lineinfo' ],
+  \            [ 'percent' ],
+  \            [ 'filetype'] ] } 
+
+function! GetSpell()
+    return &spell ? 'SPELL' : ''
+endfunction
+
+let g:lightline.inactive = {
+  \ 'left': [ [ 'filename' ] ],
+  \ 'right': [ [ 'lineinfo' ],
+  \            [ 'percent' ] ] }
 
 let &t_ut='' "This fixes weird black line bug
 
@@ -152,9 +163,7 @@ endfunction
 "Fairly rudimentary function to comment a line
 function! CommentLine()
     execute "normal yypk0d^"
-
     let line = getline('.')
-
     execute "normal dd"
 
     if (&filetype == "c" || &filetype == "cpp")
