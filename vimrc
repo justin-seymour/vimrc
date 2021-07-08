@@ -1,3 +1,6 @@
+" Created by Justin Seymour
+" Stop taking credit for my stuff Danny
+
 "runtime! archlinux.vim
 set encoding=UTF-8
 
