@@ -1,4 +1,4 @@
-runtime! archlinux.vim
+"runtime! archlinux.vim
 set encoding=UTF-8
 
 if has("syntax")
@@ -33,40 +33,30 @@ set background=dark
 
 set viminfo+=n~/.vim/viminfo
 
-"Search down into folders
-"Provides tab completion for all file related tasks
-"set path+=**
-" Hit tab to :find partial match
-" * makes it fuzzy (eg ':find task*.cpp' finds all tasks in directory)
-
-" ^n does autocomplete in vim
-
+" Fix indenting
 au BufEnter * set fo-=c fo-=r fo-=o
 
+"Plugin stuff
+"Auto install plugins
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
                 \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     autocmd VimEnter * PlugInstall --sync | source /etc/vimrc
 endif
 
-"Switch to plug
 call plug#begin('~/.vim/plugged')
-"Plugin 'VundleVim/Vundle.vim'
 
 "Plugins here
-Plug 'preservim/nerdtree'
-"Plug 'tomasiser/vim-code-dark'
 Plug 'justin-seymour/vim-code-dark'
+Plug 'NLKNguyen/papercolor-theme'
 Plug 'ajmwagar/vim-deus'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'NLKNguyen/papercolor-theme'
 Plug 'lervag/vimtex'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-"End Vundle stuff
 call plug#end()
 "filetype plugin indent on
 
@@ -84,11 +74,7 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-"Nerdtree config
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
 "Colourscheme
-"colo ron
 "colo PaperColor
 colo codedark
 let &t_ut='' "This fixes weird black line bug
@@ -131,18 +117,19 @@ let g:tex_flavor = 'latex'
 let maplocalleader = "\\" "Good enough?? It's convenient at least
 let mapleader = "\<Space>"
 
+"Remap for easier window + buffer navigation
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>l :wincmd l<CR>
-nnoremap <leader>n :bnext <CR>
-nnoremap <leader>p :bprev <CR>
-nnoremap <leader>m :NERDTreeToggle<CR>
 
 nnoremap <leader>= :resize +2<CR>
 nnoremap <leader>- :resize -2<CR>
 nnoremap <leader>. :vertical resize +5<CR>
 nnoremap <leader>, :vertical resize -5<CR>
+
+nnoremap <leader>n :bnext <CR>
+nnoremap <leader>p :bprev <CR>
 "Just do <C-w>= for equal
 "<C-w>_ maxes split
 "<C-w>| maxes v split
@@ -161,21 +148,6 @@ let g:PaperColor_Theme_Options = {
             \ }
 
 "Compile - only works for make and c/c++
-function! Runf4()
-    if filereadable("./Makefile")
-        execute(":w")
-        make
-    else
-        if (&filetype == "c")
-            execute(":w")
-            execute("exec '!gcc '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')")
-        elseif (&filetype ==  "cpp")
-            execute(":w")
-            execute("exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')")
-        endif
-    endif
-endfunction
-
 function! Runf3()
     if filereadable("./Makefile")
         execute(":w")
@@ -191,6 +163,11 @@ function! Runf3()
     endif
 endfunction
 
+" Run compiled code - mapping command would probably be easier but oh well
+function! Runf4()
+    execute("! ./%:r")
+endfunction
+
 nmap <F4> :call Runf4()<CR>
 nmap <F3> :call Runf3()<CR>
 
@@ -200,6 +177,7 @@ set ttymouse=sgr
 "Set language for spell check
 set spelllang=en_au
 
+" Fairly rudimentary function to comment a line
 function! CommentLine()
 
     "duplicate line and delete whitespace
@@ -210,8 +188,6 @@ function! CommentLine()
 
     "delete line
     execute "normal dd"
-
-    "echo line
 
     "if commented - uncomment
     "else comment
@@ -228,8 +204,8 @@ function! CommentLine()
         else
             execute "normal ^i%"
         endif
-
     endif
+
 endfunction
 
 nnoremap <leader>; :call CommentLine()<CR>
