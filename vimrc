@@ -147,6 +147,13 @@ let g:PaperColor_Theme_Options = {
             \   }
             \ }
 
+" Fixes mouse in alacritty
+set ttymouse=sgr
+
+"Set language for spell check
+set spelllang=en_au
+
+" Functions
 "Compile - only works for make and c/c++
 function! Runf3()
     if filereadable("./Makefile")
@@ -167,15 +174,6 @@ endfunction
 function! Runf4()
     execute("! ./%:r")
 endfunction
-
-nmap <F4> :call Runf4()<CR>
-nmap <F3> :call Runf3()<CR>
-
-" Fixes mouse in alacritty
-set ttymouse=sgr
-
-"Set language for spell check
-set spelllang=en_au
 
 " Fairly rudimentary function to comment a line
 function! CommentLine()
@@ -208,5 +206,8 @@ function! CommentLine()
 
 endfunction
 
+" Bind functions
+nmap <F4> :call Runf4()<CR>
+nmap <F3> :call Runf3()<CR>
 nnoremap <leader>; :call CommentLine()<CR>
 
