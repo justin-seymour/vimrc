@@ -1,3 +1,6 @@
+" Created by Justin Seymour
+" Stop taking credit for my stuff, Danny
+
 "runtime! archlinux.vim
 set encoding=UTF-8
 
@@ -102,8 +105,7 @@ let g:lightline = {
   \ 'colorscheme': 'codedark',
   \ 'component_function': {
   \     'spelling': 'GetSpell',
-  \ },
-  \ }
+  \ }, }
 
 let g:lightline.active = {
   \ 'left': [ [ 'mode', 'paste' ],
