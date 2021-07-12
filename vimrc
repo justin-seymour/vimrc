@@ -111,9 +111,11 @@ let g:lightline.active = {
   \ 'left': [ [ 'mode', 'paste' ],
   \           [ 'spelling' ],
   \           [ 'readonly', 'filename', 'modified' ] ],
-  \ 'right': [ [ 'lineinfo' ],
+  \ 'right': [ [ 'bufnum' ],
+  \            [ 'lineinfo' ],
   \            [ 'percent' ],
-  \            [ 'filetype'] ] } 
+  \            [ 'filetype']
+  \            ] } 
 
 function! GetSpell()
     return &spell ? 'SPELL' : ''
@@ -121,8 +123,10 @@ endfunction
 
 let g:lightline.inactive = {
   \ 'left': [ [ 'filename' ] ],
-  \ 'right': [ [ 'lineinfo' ],
-  \            [ 'percent' ] ] }
+  \ 'right': [ [ 'bufnum' ],
+  \            [ 'lineinfo' ],
+  \            [ 'percent' ],
+  \            [ 'filetype' ] ] }
 
 let &t_ut='' "This fixes weird black line bug
 
