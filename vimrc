@@ -52,6 +52,10 @@ Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
+"fzf config
+"let g:fzf_layout = { 'down': '40%' }
+let g:fzf_layout = { 'window': { 'width': 1, 'height': 0.4, 'yoffset': 1, 'border': 'none' } }
+
 "coc config
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -183,6 +187,12 @@ function! CommentLine()
             execute "normal ^x"
         else
             execute "normal ^i%"
+        endif
+    elseif (&filetype == "vim")
+        if (strpart(line, 0, 1) == "\"")
+            execute "normal ^x"
+        else
+            execute "normal ^i\""
         endif
     endif
 endfunction
