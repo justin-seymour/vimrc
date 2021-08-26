@@ -167,7 +167,11 @@ endfunction
 
 "Run compiled code - mapping command would probably be easier but oh well
 function! Runf4()
-    execute("! ./%:r")
+    if (&filetype == "c")
+        execute("!./%:r")
+    elseif (&filetype == "java")
+        execute("!java %:r")
+    endif
 endfunction
 
 "Fairly rudimentary function to comment a line
