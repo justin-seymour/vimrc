@@ -180,7 +180,7 @@ function! CommentLine()
     let line = getline('.')
     execute "normal dd"
 
-    if (&filetype == "c" || &filetype == "cpp")
+    if (&filetype == "c" || &filetype == "cpp" || &filetype == "java")
         if (strpart(line, 0, 2) == "//")
             execute "normal ^xx"
         else
